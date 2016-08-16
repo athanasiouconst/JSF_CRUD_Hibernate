@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>JSF_CRUD_Hibernate</title>
+    </h:head>
+    <h:body>
+        <h:link outcome="createStudent" value="Create a new Student "  />
+        <h:form>
+            <h:dataTable value="#{studentBean.lst}" var="student">
+                <h:column>
+                    <f:facet name="header">student_Id</f:facet>
+                    #{student.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">name</f:facet>
+                    #{student.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">department</f:facet>
+                    #{student.department}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Actions</f:facet>
+                    <h:commandLink value="Remove" action="#{studentBean.remove(student)}" onclick="return confirm('Are you Sure')"  />
+                    | 
+                    <h:commandLink value="Edit" action="#{studentBean.edit(student)}" onclick="return confirm('Are you Sure')"  />
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
